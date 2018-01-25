@@ -9,7 +9,7 @@ Page({
   */
   data: {
     tabs:['自选','币值','涨幅','成交量','最新价'],
-    tabsContent: ['#', '项目', '单价', '', '最新价'],
+    tabsContent: ['交易对', '最新价', '成交量', '流通市值', '涨跌'],
     activeIndex:'0',
     sliderOffset: 0,
     sliderLeft: 0,
