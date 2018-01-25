@@ -6,7 +6,34 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "币格交易助手",
     "navigationBarTextStyle":"black"
-  }
+
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "selectedColor": "#5b8ed2",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "看行情",
+        "iconPath": "images/homePageUnselected.png",
+        "selectedIconPath": "images/homePageSelected.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "交易所",
+        "iconPath": "images/bidUnselected.png",
+        "selectedIconPath": "images/bidSelected.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "更多",
+        "iconPath": "images/orderUnSelected.png",
+        "selectedIconPath": "images/orderSelected.png"
+      }
+    ]
+  },
+  "debug": true
 }

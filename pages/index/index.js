@@ -4,11 +4,16 @@ const app = getApp();
 let loadMore = true;
 let sliderWidth = 103; // 需要设置slider的宽度，用于计算中间位置
 Page({
+  /*
+  *页面初始数据
+  */
   data: {
     tabs:['自选','币值','涨幅','成交量','最新价'],
+    tabsContent: ['#', '项目', '单价', '', '最新价'],
     activeIndex:'0',
     sliderOffset: 0,
     sliderLeft: 0,
+    scrollHeight:0,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -20,16 +25,19 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: function (options) {
     wx.getSystemInfo({
-      success: function(res) {
+      success: (res) => {
         this.setData({
           sliderLeft: (res.windowWidth / this.data.tabs.length),
           scrollHeight: res.windowHeight
 
         });
+
       }
-    })
+
+    });
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

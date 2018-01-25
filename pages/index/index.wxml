@@ -15,8 +15,8 @@
 -->
 <view class="weui-navbar">
   <block wx:for-items="{{tabs}}" wx:key="{{index}}">
-    <view id="{{index}}" class="weui-narbar-item {{activeIndex == index ?'weui-bar-on':''}}" bindtap="tabClick">
-      <view class="weui-navbar_title">{{item}}</view>
+    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ?'weui-bar-on':''}}" bindtap="tabClick">
+      <view class="weui-navbar__title">{{item}}</view>
     </view>
   </block>
   <view class="weui-navbar__slider" style="width: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
