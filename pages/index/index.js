@@ -1,9 +1,14 @@
 //index.js
 //获取应用实例
-const app = getApp()
-
+const app = getApp();
+let loadMore = true;
+let sliderWidth = 103; // 需要设置slider的宽度，用于计算中间位置
 Page({
   data: {
+    tabs:['自选','币值','涨幅','成交量','最新价'],
+    activeIndex:'0',
+    sliderOffset: 0,
+    sliderLeft: 0,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -16,6 +21,15 @@ Page({
     })
   },
   onLoad: function () {
+    wx.getSystemInfo({
+      success: function(res) {
+        this.setData({
+          sliderLeft: (res.windowWidth / this.data.tabs.length),
+          scrollHeight: res.windowHeight
+
+        });
+      }
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -50,5 +64,21 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+  tabClick: function (e) {
+    // loadMore = true;
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id,
+
+    });
+    status = e.currentTarget.id;
+    this.goToTop();
+    // this.fetchData(true);
+  },
+  goToTop: function () { //回到顶部
+    this.setData({
+      scrolltop: 0
+    })
+  },
 })
