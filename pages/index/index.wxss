@@ -1,22 +1,44 @@
-/**index.wxss**/
-.tab-content{
- margin-top: 50px;
- background: #fff;
- font-size: 12px;
+/* login.wxss */
+
+page {
+  background-color: #ebebef;
+  /* height: 100%; */
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+  overflow: hidden;
 }
-.tab-content .cell{
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+input {
+  padding: 20rpx 0;
+  margin-left: 20rpx;
+}
+
+input:first-child {
+  border-bottom: 1pt solid #f0f0f0;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.btnGroup {
+  display: flex;
+  padding: 40rpx 0;
+}
+
+/*公司名称  */
+
+.companyName {
   text-align: center;
-  line-height: 30px;
-}
-.content-list{
-  background: #fff;
- font-size: 12px;
- text-align: center;
-}
-.content-list .list{
- padding: 10px 0;
- border-bottom: 1px solid #efefef;
-}
-.col-9{
+  position: absolute;
+  bottom: 20px;
   color: #999;
 }
