@@ -1,44 +1,73 @@
-/* login.wxss */
 
-page {
-  background-color: #ebebef;
-  /* height: 100%; */
-  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
-  overflow: hidden;
+
+.tab-content{
+ background: #282b36;
+ font-size: 12px;
+ color: #999999;
+ padding: 0 10px 0 10px;
+
 }
-
-.userInfo {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+.tab-content .cell{
+  line-height: 30px;
 }
-
-input {
-  padding: 20rpx 0;
-  margin-left: 20rpx;
+.content-list{
+ background: #1e212a;
+ font-size: 12px;
+ text-align: center;
+ padding: 0 10px;
 }
-
-input:first-child {
-  border-bottom: 1pt solid #f0f0f0;
+.content-list .list{
+ padding: 10px 0;
+ border-bottom: 1px solid #20272c;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.btnGroup {
-  display: flex;
-  padding: 40rpx 0;
-}
-
-/*公司名称  */
-
-.companyName {
-  text-align: center;
-  position: absolute;
-  bottom: 20px;
+.col-9{
   color: #999;
+}
+.narbar-cell{
+  width: 50%;
+}
+.weui-navbar {
+  width: 50%;
+  background-color:#1E212A;
+}
+.search-cell{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  width:50%;
+  background-color:#1E212A;
+  height:50px;
+}
+.search-left{
+  flex: 7;
+}
+.search-right{
+  flex: 3;
+}
+.search-btn{
+  position: relative;
+  top: 35%;
+  left: 35%;
+}
+.list-down,.list-up{
+  display: inline-block;
+  vertical-align:middle;
+}
+
+.tab-on{
+  color: #f0b90b;
+}
+.flex-4{
+  flex: 4;
+}
+.flex-3{
+  flex: 3;
+}
+.back-btn{
+  vertical-align:middle;
+  display:inline-block;
+  width:80%;
+  line-height:25px;
+  background:#9a1e1e;
+  border-radius:3px;
 }

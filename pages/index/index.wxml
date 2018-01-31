@@ -1,27 +1,128 @@
 <!--index.wxml-->
-<view class='login-container'>
-  <view>
-    <text>登录币格交易助手</text>
-  </view>
-  <view class='input-list'>
-    <view>
-      <input placeholder="输入手机号" auto-focus bindinput="getUserName" class="userName" />
-    </view>
-    <view>
-      <button><text>向右滑动获取验证码</text></button>
-    </view>
-    <view class='row'>
-      <view class="cell">
-        <input placeholder="输入验证码" auto-focus type="password" bindinput="getPassWord" class="password" />
+<view class='row'>
+<view class='cell narbar-cell'>
+  <view class="weui-navbar">
+    <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ?'weui-bar__item_on':''}}" bindtap="tabClick">
+          <view class="weui-navbar__title">{{item}}</view>
         </view>
-      <view class="cell">
-          <button class=''><text>输入验证码</text></button>
-      </view>
+      </block>
+      <view class="weui-navbar__slider" style="width: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+</view>
+
     </view>
-    <view>
-      <button type="primary" size="{{primarySize}}" loading="{{setLoading}}" plain="{{setPlain}}" disabled="{{setDisabled}}"               bindtap="userLogin"><text>登录</text></button>
+
+  <view class='cell search-cell'>
+    <view class='row'>
+      <view class='cell search-left'></view>
+      <view class='cell search-right'><view class='search-btn'></view></view>
     </view>
-     
   </view>
 </view>
 
+
+
+<view class='row tab-content'>
+    <view  class="cell flex-4">
+      <view class='row'>
+        <view  id="1" class="cell flex-4 {{sortIndex==1?'tab-on':''}}" bindtap="sortClick">
+          <text>交易对</text>
+          <block  wx:if="{{sortIndex==1}}"><text class="{{sortType=='down'?'list-down':'list-up'}}"></text></block>
+        <view></view></view>
+        <text>/</text>
+        <view id="2" class="cell flex-6 {{sortIndex==2?'tab-on':''}}"  bindtap="sortClick">
+          <text>成交量</text>
+          <block  wx:if="{{sortIndex==2}}"><text class="{{sortType=='down'?'list-down':'list-up'}}"></text></block>
+        </view>
+      </view>
+    </view>
+    <view id="3" class="cell align-l flex-3 {{sortIndex==3?'tab-on':''}}"  bindtap="sortClick"> 
+     <text class='pad-l-20'>最新价</text>
+     <block  wx:if="{{sortIndex==3}}"><text class="{{sortType=='down'?'list-down':'list-up'}}"></text></block>
+    </view>
+    <view id="4" class="cell align-r pad-r-20 flex-3 {{sortIndex==4?'tab-on':''}}"  bindtap="sortClick"> 
+      <text>市值</text>
+      <block  wx:if="{{sortIndex==4}}"><text class="{{sortType=='down'?'list-down':'list-up'}}"></text></block>
+    </view>
+</view>
+  <scroll-view enable-back-to-top='true' class="content-list" scroll-y="true" scroll-top="{{scrolltop}}" bindscrolltolower="loadMore" bindscrolltoupper="refesh" bindscroll="scrollHandle">
+    <view>
+      <view class='row list'>
+        <view class='cell flex-4 align-l'>
+          <view><text class='font-14 col-fff'>BTC</text><text class='col-9'>/U</text></view>
+          <view class='col-9 row '>
+          <view class="cell flex-3">币安</view>
+          <view class="cell flex-7">成交量 237,8</view>
+          </view>
+        </view>
+        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>￥20000</text></view>
+        <view class='cell flex-3'><text class='col-fff back-btn mar-r-20'>15%</text></view>
+      </view>
+    </view>
+    <view>
+      <view class='row list'>
+        <view class='cell flex-4 align-l'>
+          <view><text class='font-14 col-fff'>BTC</text><text class='col-9'>/U</text></view>
+          <view class='col-9 row '>
+          <view class="cell flex-3">币安</view>
+          <view class="cell flex-7">成交量 237,8</view>
+          </view>
+        </view>
+        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>￥20000</text></view>
+        <view class='cell flex-3'><text class='col-fff back-btn mar-r-20'>15%</text></view>
+      </view>
+    </view>
+     <view>
+      <view class='row list'>
+        <view class='cell flex-4 align-l'>
+          <view><text class='font-14 col-fff'>BTC</text><text class='col-9'>/U</text></view>
+          <view class='col-9 row '>
+          <view class="cell flex-3">币安</view>
+          <view class="cell flex-7">成交量 237,8</view>
+          </view>
+        </view>
+        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>￥20000</text></view>
+        <view class='cell flex-3'><text class='col-fff back-btn mar-r-20'>15%</text></view>
+      </view>
+    </view>
+     <view>
+      <view class='row list'>
+        <view class='cell flex-4 align-l'>
+          <view><text class='font-14 col-fff'>BTC</text><text class='col-9'>/U</text></view>
+          <view class='col-9 row '>
+          <view class="cell flex-3">币安</view>
+          <view class="cell flex-7">成交量 237,8</view>
+          </view>
+        </view>
+        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>￥20000</text></view>
+        <view class='cell flex-3'><text class='col-fff back-btn mar-r-20'>15%</text></view>
+      </view>
+    </view>
+     <view>
+      <view class='row list'>
+        <view class='cell flex-4 align-l'>
+          <view><text class='font-14 col-fff'>BTC</text><text class='col-9'>/U</text></view>
+          <view class='col-9 row '>
+          <view class="cell flex-3">币安</view>
+          <view class="cell flex-7">成交量 237,8</view>
+          </view>
+        </view>
+        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>￥20000</text></view>
+        <view class='cell flex-3'><text class='col-fff back-btn mar-r-20'>15%</text></view>
+      </view>
+    </view>
+     <view>
+      <view class='row list'>
+        <view class='cell flex-4 align-l'>
+          <view><text class='font-14 col-fff'>BTC</text><text class='col-9'>/U</text></view>
+          <view class='col-9 row '>
+          <view class="cell flex-3">币安</view>
+          <view class="cell flex-7">成交量 237,8</view>
+          </view>
+        </view>
+        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>￥20000</text></view>
+        <view class='cell flex-3'><text class='col-fff back-btn mar-r-20'>15%</text></view>
+      </view>
+    </view>
+  
+  </scroll-view>

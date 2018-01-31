@@ -1,39 +1,40 @@
-//index.js
-//获取应用实例
+// pages/selfSelected/selfSelected.js
 const app = getApp();
 let loadMore = true;
 let sliderWidth = 103; // 需要设置slider的宽度，用于计算中间位置
 Page({
+
   /*
   *页面初始数据
   */
   data: {
-    tabs:['我的自选','项目大全'],
-    tabsContent: ['交易对/成交量', '最新价', '市值'],
-    activeIndex:'1',
+    tabs: ['自选', '币值', '涨幅', '成交量', '最新价'],
+    tabsContent: ['交易对', '最新价', '成交量', '流通市值', '涨跌'],
+    activeIndex: '0',
     sliderOffset: 0,
     sliderLeft: 0,
-    scrollHeight:0,
+    scrollHeight: 0,
     motto: 'Hello World',
-    sortIndex:3,
-    sortType:'up',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
+    /**
+   * 生命周期函数--监听页面加载
+   */
+
   onLoad: function (options) {
     wx.getSystemInfo({
       success: (res) => {
         this.setData({
-          sliderLeft: ((res.windowWidth*0.50) / this.data.tabs.length),
-          scrollHeight: res.windowHeight,
-          sliderOffset: ((res.windowWidth * 0.50) / this.data.tabs.length)
+          sliderLeft: (res.windowWidth / this.data.tabs.length),
+          scrollHeight: res.windowHeight
 
         });
 
@@ -46,7 +47,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -68,7 +69,7 @@ Page({
       })
     }
   },
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -87,14 +88,59 @@ Page({
     this.goToTop();
     // this.fetchData(true);
   },
-  sortClick:function(e){
-    this.setData({
-      sortIndex: e.currentTarget.id,
-    });
-  },
   goToTop: function () { //回到顶部
     this.setData({
       scrolltop: 0
     })
   },
+
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  }
 })
