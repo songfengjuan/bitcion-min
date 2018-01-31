@@ -14,8 +14,9 @@
   },
   "tabBar": {
     "borderStyle": "white",
-    "selectedColor": "#5b8ed2",
-    "backgroundColor": "#fff",
+    "color": "#999999",
+    "selectedColor": "#F0B90B",
+    "backgroundColor": "#1e212a",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -26,14 +27,14 @@
       {
         "pagePath": "pages/index/index",
         "text": "交易所",
-        "iconPath": "images/bidUnselected.png",
-        "selectedIconPath": "images/bidSelected.png"
+        "iconPath": "images/deal.png",
+        "selectedIconPath": "images/dealSelected.png"
       },
       {
         "pagePath": "pages/index/index",
         "text": "更多",
-        "iconPath": "images/orderUnSelected.png",
-        "selectedIconPath": "images/orderSelected.png"
+        "iconPath": "images/more.png",
+        "selectedIconPath": "images/moreSelected.png"
       }
     ]
   },

@@ -25,24 +25,23 @@
 <view class='row tab-content'>
     <view  class="cell flex-4">
       <view class='row'>
-        <view  id="1" class="cell flex-4 {{sortIndex==1?'tab-on':''}}" bindtap="sortClick">
-          <text>交易对</text>
-          <block  wx:if="{{sortIndex==1}}"><text class="{{sortType=='down'?'list-down':'list-up'}}"></text></block>
+        <view  id="1" data-sort="{{dealQuanType}}" data-type="dealQuanType" class="cell flex-3 {{sortIndex==1?'tab-on':''}}">
+          <text>交易对/</text>
+          <block  wx:if="{{sortIndex==1}}"><text class="{{dealQuanType=='down'?'list-down':'list-up'}}"></text></block>
         <view></view></view>
-        <text>/</text>
-        <view id="2" class="cell flex-6 {{sortIndex==2?'tab-on':''}}"  bindtap="sortClick">
+        <view id="2"  data-sort="{{tradeQuanType}}"  data-type="tradeQuanType" class="cell flex-7 {{sortIndex==2?'tab-on':''}}"  bindtap="sortClick">
           <text>成交量</text>
-          <block  wx:if="{{sortIndex==2}}"><text class="{{sortType=='down'?'list-down':'list-up'}}"></text></block>
+          <block  wx:if="{{sortIndex==2}}"><text class="list-down"></text></block>
         </view>
       </view>
     </view>
-    <view id="3" class="cell align-l flex-3 {{sortIndex==3?'tab-on':''}}"  bindtap="sortClick"> 
+    <view id="3"  data-sort="{{lastPriceType}}"  data-type="lastPriceType" class="cell align-l flex-3 {{sortIndex==3?'tab-on':''}}"  bindtap="sortClick"> 
      <text class='pad-l-20'>最新价</text>
-     <block  wx:if="{{sortIndex==3}}"><text class="{{sortType=='down'?'list-down':'list-up'}}"></text></block>
+     <block  wx:if="{{sortIndex==3}}"><text class="{{lastPriceType=='down'?'list-down':'list-up'}}"></text></block>
     </view>
-    <view id="4" class="cell align-r pad-r-20 flex-3 {{sortIndex==4?'tab-on':''}}"  bindtap="sortClick"> 
+    <view id="4"  data-sort="{{markValeType}}" data-type="markValeType" class="cell align-r pad-r-20 flex-3 {{sortIndex==4?'tab-on':''}}"  bindtap="sortClick"> 
       <text>市值</text>
-      <block  wx:if="{{sortIndex==4}}"><text class="{{sortType=='down'?'list-down':'list-up'}}"></text></block>
+      <block  wx:if="{{sortIndex==4}}"><text class="{{markValeType=='down'?'list-down':'list-up'}}"></text></block>
     </view>
 </view>
   <scroll-view enable-back-to-top='true' class="content-list" scroll-y="true" scroll-top="{{scrolltop}}" bindscrolltolower="loadMore" bindscrolltoupper="refesh" bindscroll="scrollHandle">

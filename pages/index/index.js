@@ -16,7 +16,12 @@ Page({
     scrollHeight:0,
     motto: 'Hello World',
     sortIndex:3,
-    sortType:'up',
+    sortType:'down',
+    dealQuanType: 'down',
+    tradeQuanType: 'down',
+    lastPriceType: 'down',
+    markValeType: 'down',
+    roseValeType: 'down',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -77,6 +82,7 @@ Page({
     })
   },
   tabClick: function (e) {
+    
     // loadMore = true;
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
@@ -88,9 +94,42 @@ Page({
     // this.fetchData(true);
   },
   sortClick:function(e){
-    this.setData({
-      sortIndex: e.currentTarget.id,
-    });
+    var sort = e.currentTarget.dataset.sort;
+    var sortType = sort == 'up'?'down':'up';
+    var currentId = e.currentTarget.id;
+    switch (currentId){
+      case '1':{
+        this.setData({
+          sortIndex: e.currentTarget.id,
+          dealQuanType: sortType
+        });
+      }
+      case '2': {
+        this.setData({
+          sortIndex: e.currentTarget.id,
+          tradeQuanType: sortType
+        });
+      }
+      case '3': {
+        this.setData({
+          sortIndex: e.currentTarget.id,
+          lastPriceType: sortType
+        });
+      }
+      case '4': {
+        this.setData({
+          sortIndex: e.currentTarget.id,
+          markValeType: sortType
+        });
+      }
+      case '5': {
+        this.setData({
+          sortIndex: e.currentTarget.id,
+          roseValeType: sortType
+        });
+      }
+
+    }
   },
   goToTop: function () { //回到顶部
     this.setData({
