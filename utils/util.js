@@ -16,7 +16,8 @@ var utils = {
     return [year, month, day].map(this.formatNumber).join('-') + ' ' + [hour, minute, second].map(this.formatNumber).join(':')
   },
   getUrl: function () {
-    return "https://www.gpcmarket.cn/mini/dev/";
+    // return "https://www.gpcmarket.cn/mini/dev/";
+    return "http://39.106.148.255/wechat";
   },
   formatNumber: function (n) {
     n = n.toString()

@@ -36,28 +36,30 @@
       </view>
     </view>
     <view id="3"  data-sort="{{lastPriceType}}"  data-type="lastPriceType" class="cell align-l flex-3 {{sortIndex==3?'tab-on':''}}"  bindtap="sortClick"> 
-     <text class='pad-l-20'>最新价</text>
+     <text class=''>最新价</text>
      <block  wx:if="{{sortIndex==3}}"><text class="{{lastPriceType=='down'?'list-down':'list-up'}}"></text></block>
     </view>
-    <view id="4"  data-sort="{{markValeType}}" data-type="markValeType" class="cell align-r pad-r-20 flex-3 {{sortIndex==4?'tab-on':''}}"  bindtap="sortClick"> 
-      <text>市值</text>
-      <block  wx:if="{{sortIndex==4}}"><text class="{{markValeType=='down'?'list-down':'list-up'}}"></text></block>
+    <view id="{{tabId}}"  data-sort="{{markValeType}}" data-type="markValeType" class="cell align-r pad-r-20 flex-3 {{sortIndex==tabId?'tab-on':''}}"  bindtap="sortClick"> 
+      <text>{{tabText}}</text>
+      <block  wx:if="{{sortIndex==tabId}}"><text class="{{markValeType=='down'?'list-down':'list-up'}}"></text></block>
     </view>
 </view>
   <scroll-view enable-back-to-top='true' class="content-list" scroll-y="true" scroll-top="{{scrolltop}}" bindscrolltolower="loadMore" bindscrolltoupper="refesh" bindscroll="scrollHandle">
+  <view class="list-item" wx:for="{{list}}" wx:key="{{item.id}}">
     <view>
       <view class='row list'>
         <view class='cell flex-4 align-l'>
-          <view><text class='font-14 col-fff'>BTC</text><text class='col-9'>/U</text></view>
+          <view><text class='font-14 col-fff'>{{item.name}}</text><text class='col-9'>/U</text></view>
           <view class='col-9 row '>
           <view class="cell flex-3">币安</view>
-          <view class="cell flex-7">成交量 237,8</view>
+          <view class="cell flex-7">成交量 {{item.cje_usd}}</view>
           </view>
         </view>
-        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>￥20000</text></view>
-        <view class='cell flex-3'><text class='col-fff back-btn mar-r-20'>15%</text></view>
+        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>{{item.jg_usd}}</text></view>
+        <view class='cell flex-3'><text id="{{tabId}}" bindtap='changeSortType' class='col-fff back-btn mar-r-20'>{{item.biZf}}%</text></view>
       </view>
     </view>
+  </view>
     <view>
       <view class='row list'>
         <view class='cell flex-4 align-l'>
