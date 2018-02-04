@@ -68,19 +68,36 @@ var utils = {
   },
   //格式化金钱
   formatCurrency: function (num) {
+    var currentUnit = '';
     num = num.toString().replace(/\$|\,/g, '');
     if (isNaN(num))
       num = "0";
     var sign = (num == (num = Math.abs(num)));
+    if (num / 1E+5 > 0 && num / 1E+8 < 0){
+      currentUnit = '万';
+      num = num / 1E+5;
+    } else if (num / 1E+8 >0){
+      currentUnit = '亿';
+      num = num / 1E+8;
+    }
     num = Math.floor(num * 100 + 0.50000000001);
     var cents = num % 100;
     num = Math.floor(num / 100).toString();
-    if (cents < 10)
-      cents = "0" + cents;
+    if (cents < 10 && currentUnit == '' && cents != 0 ) {
+      cents = '.1'
+    }else if (currentUnit == '' && cents == 0) {
+      cents = ''
+    }else if (cents < 10 && currentUnit != '') {
+      cents = '.1'
+    } else if (cents > 10) {
+      cents = '.'+cents.toString().charAt(0);
+    }
+      // cents = "0" + cents;
     for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++)
       num = num.substring(0, num.length - (4 * i + 3)) + ',' +
         num.substring(num.length - (4 * i + 3));
-    return (((sign) ? '' : '-') + num + '.' + cents);
+    // return (((sign) ? '' : '-') + num + '.' + cents);
+    return (((sign) ? '' : '-') + num + cents+currentUnit);
   },
   // 倒计时
   countDownTime: function (endTime, intervalTime, type = 1) {
