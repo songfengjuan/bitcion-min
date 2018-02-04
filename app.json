@@ -2,15 +2,13 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/selfSelected/selfSelected",
-    "pages/login/login"
+    "pages/selfSelected/selfSelected"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#1e212a",
     "navigationBarTitleText": "币格交易助手",
-    "navigationBarTextStyle":"#fff"
-
+    "navigationBarTextStyle": "#fff"
   },
   "tabBar": {
     "borderStyle": "white",
