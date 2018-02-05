@@ -30,6 +30,7 @@ Page({
     tabId:4,
     tabText:'市值',
     loadingDisplay:'block',
+    currentTab:'attention',
     list:[],
     userInfo: {},
     hasUserInfo: false,
@@ -65,11 +66,13 @@ Page({
     })
   },
   tabClick: function (e) {
-    
+    var currentTab = this.data.currentTab;
+    var tabSel = currentTab == 'attention'?'all':'attention';
     // loadMore = true;
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id,
+      currentTab: tabSel
 
     });
     status = e.currentTarget.id;
