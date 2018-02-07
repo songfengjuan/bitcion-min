@@ -1,0 +1,24 @@
+<!--pages/login/login.wxml-->
+<view class='login-container'>
+  <view class='input-list'>
+    <view>
+      <input placeholder="输入手机号" auto-focus bindinput="getUserName" class="userName" />
+    </view>
+    <view>
+      <button><text>向右滑动获取验证码</text></button>
+    </view>
+    <view class='row'>
+      <view class="cell">
+        <input placeholder="输入验证码" auto-focus type="password" bindinput="getPassWord" class="password" />
+        </view>
+      <view class="cell">
+          <button class=''><text>输入验证码</text></button>
+      </view>
+    </view>
+    <view>
+      <button type="primary" size="{{primarySize}}" loading="{{setLoading}}" plain="{{setPlain}}" disabled="{{setDisabled}}"               bindtap="userLogin"><text>登录</text></button>
+    </view>
+     
+  </view>
+</view>
+

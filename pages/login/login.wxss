@@ -1,0 +1,34 @@
+/* pages/login/login.wxss */
+page {
+  background-color: #ebebef;
+  /* height: 100%; */
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+input {
+  padding: 20rpx 0;
+  margin-left: 20rpx;
+}
+
+input:first-child {
+  border-bottom: 1pt solid #f0f0f0;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.btnGroup {
+  display: flex;
+  padding: 40rpx 0;
+}
