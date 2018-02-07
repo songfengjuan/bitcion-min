@@ -17,7 +17,8 @@ var utils = {
   },
   getUrl: function () {
     // return "https://www.gpcmarket.cn/mini/dev/";
-    return "http://39.106.148.255/wechat";
+    // return "http://39.106.148.255/wechat";
+    return "https://api.zhib.didaedu.com/wechat";
   },
   formatNumber: function (n) {
     n = n.toString()
