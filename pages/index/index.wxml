@@ -57,17 +57,17 @@
         <view  id="1" data-sort="{{dealQuanType}}" data-type="dealQuanType" class="cell flex-3 {{sortIndex==1?'tab-on':''}}">
           <text>项目/</text>
         </view>
-        <view id="2"  data-sort="{{tradeQuanType}}"  data-type="tradeQuanType" class="cell flex-7 {{sortIndex==2?'tab-on':''}}"  bindtap="sortClick">
+        <view id="2"  data-orderField="cje_usd" data-sort="{{tradeQuanType}}"  data-type="tradeQuanType" class="cell flex-7 {{sortIndex==2?'tab-on':''}}"  bindtap="sortClick">
           <text>成交量</text>
           <block  wx:if="{{sortIndex==2}}"><text class="list-down"></text></block>
         </view>
       </view>
     </view>
-    <view id="3"  data-sort="{{lastPriceType}}"  data-type="lastPriceType" class="cell align-l flex-2 {{sortIndex==3?'tab-on':''}}"  bindtap="sortClick"> 
+    <view id="3" data-orderField="jg_usd" data-sort="{{lastPriceType}}"  data-type="lastPriceType" class="cell align-l flex-2 {{sortIndex==3?'tab-on':''}}"  bindtap="sortClick"> 
      <text class=''>最新价</text>
      <block  wx:if="{{sortIndex==3}}"><text class="{{lastPriceType=='down'?'list-down':'list-up'}}"></text></block>
     </view>
-    <view id="{{tabId}}"  data-sort="{{markValeType}}" data-type="markValeType" class="cell align-r pad-r-20 flex-3 {{sortIndex==tabId?'tab-on':''}}"  bindtap="sortClick"> 
+    <view id="{{tabId}}"  data-orderField="cje_usd" data-sort="{{markValeType}}" data-type="markValeType" class="cell align-r pad-r-20 flex-3 {{sortIndex==tabId?'tab-on':''}}"  bindtap="sortClick"> 
       <text>{{tabText}}</text>
       <block  wx:if="{{sortIndex==tabId}}"><text class="{{markValeType=='down'?'list-down':'list-up'}}"></text></block>
     </view>
@@ -108,81 +108,10 @@
           </view>
         </view>
         <view class='cell flex-2 align-l'><text class='font-14 col-fff'>{{item.jg_usd}}</text></view>
-        <view class='cell flex-3 pad-r-20'><text id="{{tabId}}" bindtap='changeSortType' class='col-fff back-btn mar-r-20'><block  wx:if="{{tabText=='市值'}}">{{item.ltsz_usd}}</block><block  wx:if="{{tabText=='涨幅'}}">{{item.biZf}}</block></text></view>
+        <view class='cell flex-3 pad-r-20'><text id="{{tabId}}" bindtap='changeSortType' class='col-fff back-btn mar-r-20'><block  wx:if="{{tabText=='市值'}}">{{item.ltsz_usd}}</block><block  wx:if="{{tabText=='涨幅'}}">{{item.biZf}}%</block></text></view>
       </view>
     </view>
     
   </block>
-  
-    <view>
-      <view class='row list'>
-
-
-
-
-
-        <view class='cell flex-4 align-l'>
-          <view><text class='font-14 col-fff'>BTC</text><text class='col-9'>/U</text></view>
-          <view class='col-9 row '>
-          <view class="cell flex-3">币安</view>
-          <view class="cell flex-7">成交量 237,8</view>
-          </view>
-        </view>
-        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>￥20000</text></view>
-        <view class='cell flex-3'><text class='col-fff back-btn mar-r-20'>15%</text></view>
-      </view>
-    </view>
-     <view>
-      <view class='row list'>
-        <view class='cell flex-4 align-l'>
-          <view><text class='font-14 col-fff'>BTC</text><text class='col-9'>/U</text></view>
-          <view class='col-9 row '>
-          <view class="cell flex-3">币安</view>
-          <view class="cell flex-7">成交量 237,8</view>
-          </view>
-        </view>
-        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>￥20000</text></view>
-        <view class='cell flex-3'><text class='col-fff back-btn mar-r-20'>15%</text></view>
-      </view>
-    </view>
-     <view>
-      <view class='row list'>
-        <view class='cell flex-4 align-l'>
-          <view><text class='font-14 col-fff'>BTC</text><text class='col-9'>/U</text></view>
-          <view class='col-9 row '>
-          <view class="cell flex-3">币安</view>
-          <view class="cell flex-7">成交量 237,8</view>
-          </view>
-        </view>
-        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>￥20000</text></view>
-        <view class='cell flex-3'><text class='col-fff back-btn mar-r-20'>15%</text></view>
-      </view>
-    </view>
-     <view>
-      <view class='row list'>
-        <view class='cell flex-4 align-l'>
-          <view><text class='font-14 col-fff'>BTC</text><text class='col-9'>/U</text></view>
-          <view class='col-9 row '>
-          <view class="cell flex-3">币安</view>
-          <view class="cell flex-7">成交量 237,8</view>
-          </view>
-        </view>
-        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>￥20000</text></view>
-        <view class='cell flex-3'><text class='col-fff back-btn mar-r-20'>15%</text></view>
-      </view>
-    </view>
-     <view>
-      <view class='row list'>
-        <view class='cell flex-4 align-l'>
-          <view><text class='font-14 col-fff'>BTC</text><text class='col-9'>/U</text></view>
-          <view class='col-9 row '>
-          <view class="cell flex-3">币安</view>
-          <view class="cell flex-7">成交量 237,8</view>
-          </view>
-        </view>
-        <view class='cell flex-3 align-l'><text class='font-14 col-fff'>￥20000</text></view>
-        <view class='cell flex-3'><text class='col-fff back-btn mar-r-20'>15%</text></view>
-      </view>
-    </view>
   
   </scroll-view>

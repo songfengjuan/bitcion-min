@@ -18,7 +18,7 @@ Page({
     sliderLeft: 0,
     scrollHeight: 0,
     motto: 'Hello World',
-    sortIndex: 3,
+    sortIndex: 2,
     sortType: 'down',
     dealQuanType: 'down',
     tradeQuanType: 'down',
@@ -29,6 +29,8 @@ Page({
     tabText: '市值',
     loadingDisplay: 'block',
     currentTab: 'all',
+    orderType:'DESC',
+    orderField: 'cje_usd',
     list: [],
 
     userInfo: {},
@@ -129,6 +131,7 @@ Page({
       }
 
     }
+    this.getListData(true);
   },
   goToTop: function () { //回到顶部
     this.setData({
@@ -159,8 +162,8 @@ Page({
     var params = {
       "currentPageForApp": pageNum,
       "showCount": pageSize,
-      "orderField": 'jg_cny',
-      "orderType": 'DESC'
+      "orderField": that.data.orderField,
+      "orderType": that.data.orderType
     }
     interfaces.cionList(params, (resp) => {
       if (resp.data.success === 1000) {
