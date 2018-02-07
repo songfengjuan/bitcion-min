@@ -30,6 +30,7 @@ Page({
     loadingDisplay: 'block',
     currentTab: 'all',
     list: [],
+
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -65,7 +66,7 @@ Page({
   },
   tabClick: function (e) {
     var currentTab = this.data.currentTab;
-    var tabSel = currentTab == 'attention' ? 'all' : 'attention';
+    var tabSel = currentTab == 'attention'?'all':'attention';
     // loadMore = true;
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
