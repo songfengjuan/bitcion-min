@@ -24,6 +24,7 @@ Page({
     tradeQuanType: 'down',
     lastPriceType: 'down',
     markValeType: 'down',
+    markorderField:'ltsz_usd',
     roseValeType: 'down',
     tabId: 4,
     tabText: '市值',
@@ -85,7 +86,8 @@ Page({
       this.setData({
         sortIndex: e.currentTarget.id == 4 ? 5 : 4,
         tabId: e.currentTarget.id == 4 ? 5 : 4,
-        tabText: e.currentTarget.id == 4 ? '涨幅' : '市值'
+        tabText: e.currentTarget.id == 4 ? '涨幅' : '市值',
+        markorderField: e.currentTarget.id == 4 ? 'biZf' : 'ltsz_usd'
       });
     }
     // this.setData({
@@ -98,6 +100,12 @@ Page({
     var sort = e.currentTarget.dataset.sort;
     var sortType = sort == 'up' ? 'down' : 'up';
     var currentId = e.currentTarget.id;
+    var orderType = sortType == 'up' ? 'ASC' :'DESC';
+    var orderField = e.currentTarget.dataset.orderfield
+    this.setData({
+      orderType: orderType,
+      orderField: orderField
+    });
     switch (currentId) {
       case '1': {
         this.setData({
@@ -120,13 +128,15 @@ Page({
       case '4': {
         this.setData({
           sortIndex: e.currentTarget.id,
-          markValeType: sortType
+          markValeType: sortType,
+          markorderField:'ltsz_usd'
         });
       }
       case '5': {
         this.setData({
           sortIndex: e.currentTarget.id,
-          markValeType: sortType
+          markValeType: sortType,
+          markorderField: 'biZf' 
         });
       }
 

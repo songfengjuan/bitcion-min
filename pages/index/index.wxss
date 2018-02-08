@@ -5,6 +5,9 @@
  font-size: 12px;
  color: #999999;
  padding: 0 10px 0 10px;
+ position:fixed;
+ z-index: 100;
+
 
 }
 .tab-content .cell{
@@ -15,6 +18,7 @@
  font-size: 12px;
  text-align: center;
  padding: 0 10px;
+ margin-top: 30px;
 }
 .content-list .list{
  padding: 10px 0;
@@ -30,6 +34,16 @@
   width: 50%;
   background-color:#1E212A;
 }
+.search-area{
+    display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  position: fixed;
+  z-index: 500;
+  background-color:#1E212A;
+  height:50px;
+}
+
 .search-cell{
   display:-webkit-box;
   display:-webkit-flex;
@@ -39,15 +53,14 @@
   height:50px;
 }
 .search-left{
-  flex: 7;
 }
 .search-right{
-  flex: 3;
+  flex: 2;
 }
 .search-btn{
   position: relative;
   top: 35%;
-  left: 35%;
+  left: 11%;
 }
 .list-down,.list-up{
   display: inline-block;

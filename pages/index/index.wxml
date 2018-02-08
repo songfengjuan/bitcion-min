@@ -13,7 +13,7 @@
     </view>
 
   <view class='cell search-cell'>
-    <view class='row'>
+    <view class='row search-area'>
       <view class='cell search-left'></view>
       <view class='cell search-right'><view class='search-btn'></view></view>
     </view>
@@ -29,17 +29,17 @@
           <text>交易对/</text>
           <block  wx:if="{{sortIndex==1}}"><text class="{{dealQuanType=='down'?'list-down':'list-up'}}"></text></block>
         <view></view></view>
-        <view id="2"  data-sort="{{tradeQuanType}}"  data-type="tradeQuanType" class="cell flex-7 {{sortIndex==2?'tab-on':''}}"  bindtap="sortClick">
+        <view id="2"  data-sort="{{tradeQuanType}}"  data-orderField="cje_usd" data-type="tradeQuanType" class="cell flex-7 {{sortIndex==2?'tab-on':''}}"  bindtap="sortClick">
           <text>成交量</text>
           <block  wx:if="{{sortIndex==2}}"><text class="list-down"></text></block>
         </view>
       </view>
     </view>
-    <view id="3"  data-sort="{{lastPriceType}}"  data-type="lastPriceType" class="cell align-l flex-2 {{sortIndex==3?'tab-on':''}}"  bindtap="sortClick"> 
+    <view id="3"  data-orderField="jg_usd" data-sort="{{lastPriceType}}"  data-type="lastPriceType" class="cell align-l flex-2 {{sortIndex==3?'tab-on':''}}"  bindtap="sortClick"> 
      <text class=''>最新价</text>
      <block  wx:if="{{sortIndex==3}}"><text class="{{lastPriceType=='down'?'list-down':'list-up'}}"></text></block>
     </view>
-    <view id="{{tabId}}"  data-sort="{{markValeType}}" data-type="markValeType" class="cell align-r pad-r-20 flex-3 {{sortIndex==tabId?'tab-on':''}}"  bindtap="sortClick"> 
+    <view  data-orderField="{{markorderField}}" id="{{tabId}}"  data-sort="{{markValeType}}" data-type="markValeType" class="cell align-r pad-r-20 flex-3 {{sortIndex==tabId?'tab-on':''}}"  bindtap="sortClick"> 
       <text>{{tabText}}</text>
       <block  wx:if="{{sortIndex==tabId}}"><text class="{{markValeType=='down'?'list-down':'list-up'}}"></text></block>
     </view>
@@ -67,7 +67,7 @@
      <text class=''>最新价</text>
      <block  wx:if="{{sortIndex==3}}"><text class="{{lastPriceType=='down'?'list-down':'list-up'}}"></text></block>
     </view>
-    <view id="{{tabId}}"  data-orderField="cje_usd" data-sort="{{markValeType}}" data-type="markValeType" class="cell align-r pad-r-20 flex-3 {{sortIndex==tabId?'tab-on':''}}"  bindtap="sortClick"> 
+    <view id="{{tabId}}"  data-orderField="{{markorderField}}" data-sort="{{markValeType}}" data-type="markValeType" class="cell align-r pad-r-20 flex-3 {{sortIndex==tabId?'tab-on':''}}"  bindtap="sortClick"> 
       <text>{{tabText}}</text>
       <block  wx:if="{{sortIndex==tabId}}"><text class="{{markValeType=='down'?'list-down':'list-up'}}"></text></block>
     </view>
