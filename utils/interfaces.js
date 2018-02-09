@@ -37,11 +37,17 @@ let interfaces = {
   clientManager: function (success, error) {
     ajax_general({ action: 'clientManager/info', type: 'get' }, null, success, error, null);
   },
-  //提成明细
+  //项目大全
   cionList: function (params, success, error, complete) {
     ajax_general({ action: '/often/data/list', type: 'POST' }, params, success, error, complete);
-  }
-
+  },
+  tradeDataList: function (params, success, error, complete) {
+    ajax_general({ action: '/often/data/searchtradedatas', type: 'POST' }, params, success, error, complete);
+  },
+  //获取交易所信息
+  bourse: function (params, success, error, complete) {
+    ajax_general({ action: '/often/data/bourse', type: 'POST' }, params, success, error, complete);
+  },
 }
 
 module.exports = interfaces;

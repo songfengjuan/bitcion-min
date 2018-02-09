@@ -87,7 +87,7 @@
           </view>
         </view>
         <view class='cell flex-2 align-l'><text class='font-14 col-fff'>{{item.jg_usd}}</text></view>
-        <view class='cell flex-3 pad-r-20'><text id="{{tabId}}" bindtap='changeSortType' class='col-fff back-btn mar-r-20'><block  wx:if="{{tabText=='市值'}}">{{item.ltsz_usd}}</block><block  wx:if="{{tabText=='涨幅'}}">{{item.biZf}}</block></text></view>
+        <view class='cell flex-3 pad-r-20'><text id="{{tabId}}" bindtap='changeSortType' class='col-fff back-btn mar-r-20'><block  wx:if="{{tabText=='市值'}}">{{item.ltsz_usd}}</block><block  wx:if="{{tabText=='涨幅'}}">{{item.biZf}}%</block></text></view>
       </view>
     </view>
   </view>

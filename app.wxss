@@ -8,11 +8,11 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: #1E212A;
   margin-top: 10px;
 } 
 page {
-  background-color: #14171f;
+  background-color: #1E212A;
   /* height: 100%; *//* font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif; */
   font-family: "Microsoft Yahei", "微软雅黑", Tahoma, Arial, Helvetica, STHeiti;
 }
