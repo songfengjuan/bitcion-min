@@ -1,0 +1,66 @@
+<!--pages/exchange/exchange.wxml-->
+<view class='row tab-area'>
+<view class='narbar-cell'>
+  <view class="weui-navbar">
+    <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+        <view id="{{index}}" style="width: {{sliderLeft}}px;" class="weui-navbar__item {{activeIndex == index ?'weui-bar__item_on':''}}" bindtap="tabClick">
+          <view class="weui-navbar__title" style="width: {{sliderLeft}}px;">{{item.bourse_name}}</view>
+        </view>
+      </block>
+      <view class="weui-navbar__slider" style="width: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+</view>
+
+    </view>
+
+  <view class='search-cell'>
+    <view class='search-area'>
+      <view class='search-btn'></view>
+    </view>
+  </view>
+</view>
+
+
+
+    <view class='row tab-content'>
+    <view  class="cell flex-5">
+      <view class='row'>
+        <view  id="1" data-sort="{{dealQuanType}}" data-type="dealQuanType" class="cell flex-3 {{sortIndex==1?'tab-on':''}}">
+          <text>交易对/</text>
+          <block  wx:if="{{sortIndex==1}}"><text class="{{dealQuanType=='down'?'list-down':'list-up'}}"></text></block>
+        <view></view></view>
+        <view id="2"  data-sort="{{tradeQuanType}}"  data-orderField="cje_usd" data-type="tradeQuanType" class="cell flex-7 {{sortIndex==2?'tab-on':''}}"  bindtap="sortClick">
+          <text>成交量</text>
+          <block  wx:if="{{sortIndex==2}}"><text class="list-down"></text></block>
+        </view>
+      </view>
+    </view>
+    <view id="3"  data-orderField="jg_usd" data-sort="{{lastPriceType}}"  data-type="lastPriceType" class="cell align-l flex-2 {{sortIndex==3?'tab-on':''}}"  bindtap="sortClick"> 
+     <text class=''>最新价</text>
+     <block  wx:if="{{sortIndex==3}}"><text class="{{lastPriceType=='down'?'list-down':'list-up'}}"></text></block>
+    </view>
+    <view  data-orderField="{{markorderField}}" id="{{tabId}}"  data-sort="{{markValeType}}" data-type="markValeType" class="cell align-r pad-r-20 flex-3 {{sortIndex==tabId?'tab-on':''}}"  bindtap="sortClick"> 
+      <text>{{tabText}}</text>
+      <block  wx:if="{{sortIndex==tabId}}"><text class="{{markValeType=='down'?'list-down':'list-up'}}"></text></block>
+    </view>
+  </view>
+
+
+  <scroll-view enable-back-to-top='true' class="content-list" scroll-y="true" scroll-top="{{scrolltop}}" bindscrolltolower="loadMore" bindscrolltoupper="refesh" bindscroll="scrollHandle">
+     <view class="list-item" wx:for="{{list}}" wx:key="{{item.id}}">
+    <view>
+      <view class='row list'>
+        <view class='cell flex-5 align-l'>
+          <view><text class='font-14 col-fff'>{{item.name}}</text><text class='col-9'>/U</text></view>
+          <view class='col-9 row '>
+          <view class="cell flex-2">币安</view>
+          <view class="cell flex-8">成交量 {{item.cje_usd}}</view>
+          </view>
+        </view>
+        <view class='cell flex-2 align-l'><text class='font-14 col-fff'>{{item.jg_usd}}</text></view>
+        <view class='cell flex-3 pad-r-20'><text id="{{tabId}}" bindtap='changeSortType' class='col-fff back-btn mar-r-20'><block  wx:if="{{tabText=='市值'}}">{{item.ltsz_usd}}</block><block  wx:if="{{tabText=='涨幅'}}">{{item.biZf}}%</block></text></view>
+      </view>
+    </view>
+  </view>
+  
+  
+  </scroll-view>

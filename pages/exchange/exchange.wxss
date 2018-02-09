@@ -1,0 +1,89 @@
+/* pages/exchange/exchange.wxss */
+.tab-area{
+  
+}
+.tab-content{
+ background: #282b36;
+ font-size: 12px;
+ color: #999999;
+ padding: 0 10px 0 10px;
+ position:fixed;
+ z-index: 100;
+
+
+}
+.tab-content .cell{
+  line-height: 30px;
+}
+.content-list{
+ background: #1e212a;
+ font-size: 12px;
+ text-align: center;
+ padding: 0 10px;
+ margin-top: 30px;
+}
+.content-list .list{
+ padding: 10px 0;
+ border-bottom: 1px solid #20272c;
+}
+.col-9{
+  color: #999;
+}
+.narbar-cell{
+  width: 85%;
+}
+.weui-navbar {
+  width: 85%;
+  background-color:#1E212A;
+}
+.search-area{
+    display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  position: fixed;
+  z-index: 500;
+  background-color:#1E212A;
+  height:50px;
+}
+
+.search-cell{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  width:15%;
+  height:50px;
+  z-index: 501;
+}
+
+.search-right{
+  flex: 2;
+}
+.search-btn{
+  margin:16px;
+
+}
+.list-down,.list-up{
+  display: inline-block;
+  vertical-align:middle;
+}
+
+.tab-on{
+  color: #f0b90b;
+}
+.flex-4{
+  flex: 4;
+}
+.flex-3{
+  flex: 3;
+}
+.back-btn{
+  vertical-align:middle;
+  display:inline-block;
+  width:80%;
+  line-height:25px;
+  background:#9a1e1e;
+  border-radius:3px;
+  position:relative;
+  left:20%;
+
+}

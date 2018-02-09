@@ -6,10 +6,11 @@
     "pages/exchange/exchange"
   ],
   "window":{
-    "backgroundTextStyle":"#1e212a",
+    "backgroundTextStyle":"dark",
     "navigationBarBackgroundColor": "#1e212a",
     "navigationBarTitleText": "币格交易助手",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTextStyle": "#fff",
+    "backgroundColor":"#1e212a"
   },
   "tabBar": {
     "borderStyle": "white",
