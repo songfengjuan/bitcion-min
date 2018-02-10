@@ -15,7 +15,8 @@ function ajax_general(obj, params, success, error, complete) {
     //   "content-type": "application/json"
     // },
     data: data,
-    dataType: "json",
+    dataType: 'json',
+    // jsonp: 'jsonpCall',
     success: (resp) => {
       //未登录跳至登陆页面
       if (resp.data.code==401) {
@@ -42,7 +43,7 @@ let interfaces = {
     ajax_general({ action: '/often/data/list', type: 'POST' }, params, success, error, complete);
   },
   tradeDataList: function (params, success, error, complete) {
-    ajax_general({ action: '/often/data/searchtradedatas', type: 'POST' }, params, success, error, complete);
+    ajax_general({ action: '/often/data/trade', type: 'POST' }, params, success, error, complete);
   },
   //获取交易所信息
   bourse: function (params, success, error, complete) {

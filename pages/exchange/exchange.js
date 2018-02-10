@@ -17,8 +17,6 @@ Page({
     tabsContent: ['交易对/成交量', '最新价', '市值'],
     activeIndex: '1',
     sliderOffset: 0,
-    sliderLeft: 0,
-    scrollHeight: 0,
     motto: 'Hello World',
     sortIndex: 2,
     sortType: 'down',
@@ -36,33 +34,80 @@ Page({
     orderField: 'cje_usd',
     animationData: "",
     showModalStatus: false,
+    scrollLeft:0,
+    currentTab: 0, //预设当前项的值
+    bourseName:"",
     list: [],
-
     userInfo: {},
     hasUserInfo: false,
+    screenHeight: 0,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+  // 滚动切换标签样式
+  switchTab: function (e) {
+    this.setData({
+      currentTab: e.detail.current,
+      list: [],
+    });
+    this.checkCor();
+    this.getListData(true);
+  },
+  // 点击标题切换当前页时改变样式
+  swichNav: function (e) {
+    var cur = e.target.dataset.current;
+    var bourseName = e.target.dataset.name;
+    if (this.data.currentTaB == cur) { return false; }
+    else {
+      this.setData({
+        currentTab: cur,
+        bourseName : e.target.dataset.name,
+        list: [],
+      })
+    }
+    this.getListData(true);
+
+  },
+  //判断当前滚动超过一屏时，设置tab标题滚动条。
+  checkCor: function () {
+    var current = this.data.currentTab;
+    if (current > 3) {
+      var num = Math.floor(current / 3)
+      this.setData({
+        scrollLeft: 300*num,
+        bourseName: this.data.tabs[current].bourse_name
+      })
+    } else {
+      this.setData({
+        scrollLeft: 0,
+         bourseName: this.data.tabs[current].bourse_name
+      })
+    }
   },
   onLoad: function (options) {
+    var height = 0;
     wx.getSystemInfo({
       success: (res) => {
+        height = res.windowHeight - 80;
+        
+        var clientHeight = res.windowHeight,
+          clientWidth = res.windowWidth,
+          rpxR = 750 / clientWidth;
+        var calc = clientHeight * rpxR - 160;
         this.setData({
-          sliderLeft: (((res.windowWidth-20) * 0.85) / 4),
-          scrollHeight: res.windowHeight,
-          sliderOffset: (((res.windowWidth - 20) * 0.85) / 4),
-        });
-
+          winHeight: calc,
+          screenHeight: height
+        });  
       }
 
     });
-
-    this.getListData(true);
     this.getBourseInfo(true);
+    
+    
+  },
+  scrollHandle: function (e) {
+    this.setData({
+      scrolltop: e.detail.scrollTop
+    })
   },
   getBourseInfo: function (isRefresh) {
     var that = this;
@@ -86,15 +131,12 @@ Page({
         this.parseData(resp.data.pagedata);
         this.setData({
           tabs: this.data.tabs.concat(resp.data.pagedata),
+          bourseName: resp.data.pagedata[0].bourse_name
         });
-        if (!this.data.list.length) {
-          wx.showToast({
-            title: '没有查询到相关内容',
-          })
-        }
+        this.getListData(true);
       } else {
         wx.showToast({
-          title: resp.data.exception,
+          title: resp.data.msg,
         })
       }
     }, (resp) => {
@@ -208,9 +250,13 @@ Page({
     var params = {
       "currentPageForApp": pageNum,
       "showCount": pageSize,
+      // "bourseName": that.data.bourseName,
+      // "bourseName":'OKEX',
       "orderField": that.data.orderField,
       "orderType": that.data.orderType
     }
+  
+    // interfaces.tradeDataList(params, (resp) => {
     interfaces.cionList(params, (resp) => {
       if (resp.data.success === 1000) {
         // totalPages = resp.data.data.totalPages;
@@ -226,7 +272,7 @@ Page({
         }
       } else {
         wx.showToast({
-          title: resp.data.exception,
+          title: resp.data.msg,
         })
       }
     }, (resp) => {

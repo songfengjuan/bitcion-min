@@ -2,12 +2,21 @@
 <view class='row tab-area'>
 <view class='narbar-cell'>
   <view class="weui-navbar">
-    <block wx:for-items="{{tabs}}" wx:key="{{index}}">
-        <view id="{{index}}" style="width: {{sliderLeft}}px;" class="weui-navbar__item {{activeIndex == index ?'weui-bar__item_on':''}}" bindtap="tabClick">
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+      <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+        <view class="tab-item {{currentTab==index?'active':''}}" data-name="{{item.bourse_name}}" data-current="{{index}}" bindtap="swichNav">{{item.bourse_name}}</view>
+      </block>
+    </scroll-view>
+
+    <!-- <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+      <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+        <view id="{{index}}" style="width: {{sliderLeft}}px;" class="tab-item weui-navbar__item {{activeIndex == index ?'weui-bar__item_on':''}}" bindtap="tabClick">
           <view class="weui-navbar__title" style="width: {{sliderLeft}}px;">{{item.bourse_name}}</view>
         </view>
       </block>
-      <view class="weui-navbar__slider" style="width: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+        <view class="weui-navbar__slider" style="width: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </scroll-view> -->
+    
 </view>
 
     </view>
@@ -21,7 +30,7 @@
 
 
 
-    <view class='row tab-content'>
+  <view class='row tab-content'>
     <view  class="cell flex-5">
       <view class='row'>
         <view  id="1" data-sort="{{dealQuanType}}" data-type="dealQuanType" class="cell flex-3 {{sortIndex==1?'tab-on':''}}">
@@ -44,10 +53,11 @@
     </view>
   </view>
 
-
-  <scroll-view enable-back-to-top='true' class="content-list" scroll-y="true" scroll-top="{{scrolltop}}" bindscrolltolower="loadMore" bindscrolltoupper="refesh" bindscroll="scrollHandle">
-     <view class="list-item" wx:for="{{list}}" wx:key="{{item.id}}">
-    <view>
+  <swiper class="content-list" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="height:{{winHeight}}rpx">
+        <swiper-item wx:for="{{tabs}}" wx:key="{{item.id}}">
+          <scroll-view enable-back-to-top='true' scroll-y="true" scroll-top="{{scrolltop}}" bindscrolltolower="loadMore" bindscrolltoupper="refesh" bindscroll="scrollHandle"  style="height:{{screenHeight}}px;">
+     <view class="list-item" wx:for="{{list}}" wx:key="{{item.id}}"><view>
       <view class='row list'>
         <view class='cell flex-5 align-l'>
           <view><text class='font-14 col-fff'>{{item.name}}</text><text class='col-9'>/U</text></view>
@@ -64,3 +74,6 @@
   
   
   </scroll-view>
+        </swiper-item>
+    </swiper>
+  

@@ -34,12 +34,13 @@ Page({
     orderType:'DESC',
     orderField: 'cje_usd',
     animationData: "",
+    screenHeight:0,
     showModalStatus: false,
     list: [],
-
+    showModal: false,
     userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    showDialogtitle:"",
+    hasUserInfo: false
   },
   //事件处理函数
   bindViewTap: function () {
@@ -48,9 +49,12 @@ Page({
     })
   },
   onLoad: function (options) {
+    var height = 0;
     wx.getSystemInfo({
       success: (res) => {
+        height = res.windowHeight - 80;
         this.setData({
+          screenHeight: height,
           sliderLeft: ((res.windowWidth * 0.50) / this.data.tabs.length),
           scrollHeight: res.windowHeight,
           sliderOffset: ((res.windowWidth * 0.50) / this.data.tabs.length)
@@ -73,7 +77,7 @@ Page({
   tabClick: function (e) {
     var currentTab = this.data.currentTab;
     var tabSel = currentTab == 'attention'?'all':'attention';
-    // loadMore = true;
+    loadMore = true;
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id,
@@ -82,7 +86,7 @@ Page({
     });
     status = e.currentTarget.id;
     this.goToTop();
-    // this.fetchData(true);
+    this.getListData(true);
   },
   changeSortType: function (e) {
     if (this.data.sortIndex == e.currentTarget.id) {
@@ -146,6 +150,11 @@ Page({
     }
     this.getListData(true);
   },
+  scrollHandle: function (e) {
+    this.setData({
+      scrolltop: e.detail.scrollTop
+    })
+  },
   goToTop: function () { //回到顶部
     this.setData({
       scrolltop: 0
@@ -193,7 +202,7 @@ Page({
         }
       } else {
         wx.showToast({
-          title: resp.data.exception,
+          title: resp.data.msg,
         })
       }
     }, (resp) => {
@@ -269,25 +278,20 @@ Page({
       })
     }.bind(this), 200)
   },
-  hideModal: function () {
-    // 隐藏遮罩层  
-    var animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "linear",
-      delay: 0
-    })
-    this.animation = animation;
-    animation.translateY(animationShowHeight).step()
+  showDialogBtn: function (e) {
+    var showDialogtitle = e.currentTarget.dataset.name;
     this.setData({
-      animationData: animation.export(),
+      showDialogtitle: showDialogtitle,
+      showModal: true
     })
-    setTimeout(function () {
-      animation.translateY(0).step()
-      this.setData({
-        animationData: animation.export(),
-        showModalStatus: false
-      })
-    }.bind(this), 200)
+  },
+  onCancel: function () {
+    this.hideModal();
+  },
+  hideModal: function () {
+    this.setData({
+      showModal: false
+    });
   },
   onShow: function () {
     let that = this;
@@ -296,5 +300,5 @@ Page({
         animationShowHeight = res.windowHeight;
       }
     })
-  },  
+  },
 })

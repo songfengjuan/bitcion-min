@@ -74,12 +74,12 @@
   </view>
 </block>
 
-  <scroll-view enable-back-to-top='true' class="content-list" scroll-y="true" scroll-top="{{scrolltop}}" bindscrolltolower="loadMore" bindscrolltoupper="refesh" bindscroll="scrollHandle">
+  <scroll-view enable-back-to-top='true' class="content-list scoll-h" scroll-y="true" scroll-top="{{scrolltop}}" bindscrolltolower="loadMore" bindscrolltoupper="refesh" bindscroll="scrollHandle" style="height:{{screenHeight}}px;">
   <block wx:if="{{currentTab == 'attention'}}">
      <view class="list-item" wx:for="{{list}}" wx:key="{{item.id}}">
     <view>
       <view class='row list'>
-        <view class='cell flex-5 align-l'>
+        <view class='cell flex-5 align-l' bindtap="showDialogBtn" data-name="{{item.name}}">
           <view><text class='font-14 col-fff'>{{item.name}}</text><text class='col-9'>/U</text></view>
           <view class='col-9 row '>
           <view class="cell flex-2">币安</view>
@@ -95,13 +95,13 @@
   <block wx:else>
     <view class="list-item" wx:for="{{list}}" wx:key="{{item.id}}">
       <view class='row list'>
-       <view class='cell flex-1 align-l'><text class='font-14 col-fff align-c'>{{index}}</text></view>
+       <view class='cell flex-1 align-l'><text class='font-14 col-fff align-c'>{{index+1}}</text></view>
        <view class='cell flex-1 align-l'>
         <view class="image-show" style="width:20px;height:20px">
           <image src="{{item.image_url}}" style="width:20px;height:20px"  data-src="{{item.image_url}}" id="{{list.item.image_url}}"></image>
       </view>
        </view>
-        <view class='cell flex-3 align-l'>
+        <view class='cell flex-3 align-l'  bindtap="showDialogBtn" data-name="{{item.name}}">
           <view><text class='font-14 col-fff'>{{item.name}}</text><text class='col-9'>/U</text></view>
           <view class='col-9'>
             <view class="cell flex-8">量 {{item.cje_usd}}</view>
@@ -111,7 +111,19 @@
         <view class='cell flex-3 pad-r-20'><text id="{{tabId}}" bindtap='changeSortType' class='col-fff back-btn mar-r-20'><block  wx:if="{{tabText=='市值'}}">{{item.ltsz_usd}}</block><block  wx:if="{{tabText=='涨幅'}}">{{item.biZf}}%</block></text></view>
       </view>
     </view>
-    
   </block>
-  
   </scroll-view>
+  <!-- <view animation="{{animationData}}" bindtap="hideModal" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+    <view class="row">BTC/USDT 币安 </view>
+    <view class="row">删除自选 </view>
+    <view class="row">查看项目</view>
+    <view class="row item">取消</view>
+    
+</view> -->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="row bg-color-e3"><text class='align-c'>币安  {{showDialogtitle}}/USDT</text>  </view>
+    <view class="row"  bindtap="addSelect"><text class='align-c'>添加自选</text> </view>
+    <view class="row" bindtap="showDetail"><text class='align-c'>查看项目</text></view>
+    <view class="row" bindtap="onCancel"><text class='align-c'>取消</text></view>
+</view>

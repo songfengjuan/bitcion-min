@@ -1,3 +1,4 @@
+
 var utils = {
   formatTime: function (date) {
     if (!date) {

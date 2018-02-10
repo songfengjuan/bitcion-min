@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/selfSelected/selfSelected",
-    "pages/exchange/exchange"
+    "pages/exchange/exchange",
+    "pages/test/test",
+    "pages/test2/test2"
   ],
   "window":{
     "backgroundTextStyle":"dark",
@@ -31,7 +33,7 @@
         "selectedIconPath": "images/dealSelected.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/test/test",
         "text": "更多",
         "iconPath": "images/more.png",
         "selectedIconPath": "images/moreSelected.png"

@@ -1,0 +1,25 @@
+<view class="drawer_container" animation="{{animationData}}" wx:if="{{showModalStatus}}">
+  <!--弹窗部分-->
+  <view class="drawer_box">
+    <view class="drawer_back_title" wx:if="{{isBack}}" bindtap="backProvince">返回省份的选择</view>
+    <view class="drawer_title" wx:else>选择您所在省份</view>
+    <view class="modal_close" bindtap="closeFun">×</view>
+    <view class="drawer_content">
+      <!--顶部字母部分-->
+      <view class="searchLetter">
+        <view class="all">全部</view>
+        <scroll-view scroll-x wx:for="{{searchLetter}}" wx:key="{{index}}">
+          <view bindtap="getProvincesByInitial" class="{{item==nowInitial?'nowInitial':''}}" data-initial="{{item}}">{{item}}</view>
+        </scroll-view>
+      </view>
+      <!--城市部分-->
+      <view class="province_container">
+        <block wx:for="{{provinceList}}" wx:for-item="province" wx:key="{{index}}">
+          <text class="province_block" bindtap="getCitysByProvinceId" data-provinceid="{{province.id}}">{{province.name}}</text>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view>页面内容</view>
