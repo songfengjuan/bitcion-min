@@ -188,12 +188,14 @@ Page({
       "orderType": that.data.orderType
     }
     interfaces.cionList(params, (resp) => {
-      if (resp.data.success === 1000) {
+      var repData = JSON.parse(resp.data);
+      if (repData.success === 1000) {
         // totalPages = resp.data.data.totalPages;
         // loadMore = pageNum < totalPages;
-        this.parseData(resp.data.pagedata);
+        
+        this.parseData(repData.pagedata);
         this.setData({
-          list: this.data.list.concat(resp.data.pagedata),
+          list: this.data.list.concat(repData.pagedata),
         });
         if (!this.data.list.length) {
           wx.showToast({

@@ -18,7 +18,7 @@ var utils = {
   },
   getUrl: function () {
     // return "https://www.gpcmarket.cn/mini/dev/";
-    // return "http://39.106.148.255/wechat";
+    // return "http://39.106.148.255/wechat/often/data/trade?jsonpCall=abc&bourseName=aaaa";
     return "https://api.zhib.didaedu.com/wechat";
   },
   formatNumber: function (n) {

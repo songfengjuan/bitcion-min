@@ -127,22 +127,23 @@ Page({
       "showCount": pageSize
     }
     interfaces.bourse(params, (resp) => {
-      if (resp.data.success === 1000) {
-        this.parseData(resp.data.pagedata);
+      var repData = JSON.parse(resp.data); 
+      if (repData.success === 1000) {
+        this.parseData(repData.pagedata);
         this.setData({
-          tabs: this.data.tabs.concat(resp.data.pagedata),
-          bourseName: resp.data.pagedata[0].bourse_name
+          tabs: this.data.tabs.concat(repData.pagedata),
+          bourseName: repData.pagedata[0].bourse_name
         });
         this.getListData(true);
       } else {
         wx.showToast({
-          title: resp.data.msg,
+          title: repData.msg,
         })
       }
     }, (resp) => {
 
       wx.showToast({
-        title: resp.msg,
+        title: repData.msg,
       })
     }, (resp) => {
       this.setData({
@@ -250,20 +251,21 @@ Page({
     var params = {
       "currentPageForApp": pageNum,
       "showCount": pageSize,
-      // "bourseName": that.data.bourseName,
+      "bourseName": that.data.bourseName,
       // "bourseName":'OKEX',
       "orderField": that.data.orderField,
       "orderType": that.data.orderType
     }
   
-    // interfaces.tradeDataList(params, (resp) => {
-    interfaces.cionList(params, (resp) => {
-      if (resp.data.success === 1000) {
+    interfaces.tradeDataList(params, (resp) => {
+    // interfaces.cionList(params, (resp) => {
+      var repData = JSON.parse(resp.data);
+      if (repData.success === 1000) {
         // totalPages = resp.data.data.totalPages;
         // loadMore = pageNum < totalPages;
-        this.parseData(resp.data.pagedata);
+        this.parseData(repData.pagedata);
         this.setData({
-          list: this.data.list.concat(resp.data.pagedata),
+          list: this.data.list.concat(repData.pagedata),
         });
         if (!this.data.list.length) {
           wx.showToast({
@@ -272,7 +274,7 @@ Page({
         }
       } else {
         wx.showToast({
-          title: resp.data.msg,
+          title: repData.msg,
         })
       }
     }, (resp) => {

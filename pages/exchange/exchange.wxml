@@ -60,14 +60,14 @@
      <view class="list-item" wx:for="{{list}}" wx:key="{{item.id}}"><view>
       <view class='row list'>
         <view class='cell flex-5 align-l'>
-          <view><text class='font-14 col-fff'>{{item.name}}</text><text class='col-9'>/U</text></view>
+          <view><text class='font-14 col-fff'>{{item.trade_name}}</text><text class='col-9'></text></view>
           <view class='col-9 row '>
           <view class="cell flex-2">币安</view>
           <view class="cell flex-8">成交量 {{item.cje_usd}}</view>
           </view>
         </view>
         <view class='cell flex-2 align-l'><text class='font-14 col-fff'>{{item.jg_usd}}</text></view>
-        <view class='cell flex-3 pad-r-20'><text id="{{tabId}}" bindtap='changeSortType' class='col-fff back-btn mar-r-20'><block  wx:if="{{tabText=='市值'}}">{{item.ltsz_usd}}</block><block  wx:if="{{tabText=='涨幅'}}">{{item.biZf}}%</block></text></view>
+        <view class='cell flex-3 pad-r-20'><text id="{{tabId}}" bindtap='changeSortType' class='col-fff back-btn mar-r-20'><block  wx:if="{{tabText=='市值'}}">{{item.cje_usd}}</block><block  wx:if="{{tabText=='涨幅'}}">{{item.biZf}}%</block></text></view>
       </view>
     </view>
   </view>
